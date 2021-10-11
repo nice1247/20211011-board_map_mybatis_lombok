@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.nero.prj.mybatis.BoardMapper">
+	<select id="boardSelectList" resultType="co.nero.prj.board.service.BoardVO">
+		select * from board
+	</select>
+	<select id="boardSelect" resultType="co.nero.prj.board.service.BoardVO">
+		select * from board where bid = #{bId}
+	</select>
+	<insert id="boardInsert" parameterType="co.nero.prj.board.service.BoardVO">
+		insert into board values (b_squ.nextval, #{bWriter}, sysdate, #{bTitle}, #{bContents}, 0)
+	</insert>
+	<update id="boardUpdate" parameterType="co.nero.prj.board.service.BoardVO">
+		update board
+		set bContents = #{bContents}
+		where bid = #{bId}
+	</update>
+	<delete id="boardDelete" parameterType="co.nero.prj.board.service.BoardVO">
+		delete from board where bid = #{bId}
+	</delete>
+	
+</mapper>
